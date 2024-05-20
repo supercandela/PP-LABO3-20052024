@@ -12,138 +12,129 @@
     />
     <link
       rel="icon"
-      href="./assets/images/icono-navegador.png"
+      href="./assets/images/logo.svg"
       type="image/png"
     />
     <link rel="stylesheet" href="./styles/index.css" />
-    <title>Automóviles ■ Venta y Alquiler</title>
+    <title>Planetas</title>
   </head>
 
   <body>
-    <header id="encabezado">
-      <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img
-              src="./assets/images/Icono-auto.png"
-              alt="Logo"
-              width="30"
-              height="24"
-              class="logo-principal d-inline-block align-text-top"
-            />
-            <h2>Pisteando</h2>
-            <h6>(como un campeón)</h6>
-          </a>
-
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
-                  >Nosotros</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Anuncios</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contacto</a>
-              </li>
-            </ul>
+    <div class="banner">
+      <header id="encabezado">
+        <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img
+                src="./assets/images/logo.svg"
+                alt="Logo"
+                width="30"
+                height="24"
+                class="logo-principal d-inline-block align-text-top"
+              />
+            </a>
+  
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Nosotros</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Anuncios</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contacto</a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
+      <h1>Administrador de Planetas</h1>
+    </div>
 
     <main>
-      <section class="institucional">
-        <h2 class="section-title">Administración</h2>
-        <div class="banner"></div>
-      </section>
 
       <section class="formulario-principal">
         <div class="container-md marco">
-          <h6>Información del Anuncio</h6>
+          <h6>Información del Planeta</h6>
           
           <form>
 
             <input type="hidden" id="element-id">
 
             <div class="mb-3">
-              <label for="titulo" class="form-label">Título:</label>
-              <input name="titulo" type="text" class="form-control" id="titulo" aria-describedby="titulo" required>
+              <label for="nombre" class="form-label">Nombre:</label>
+              <input name="nombre" type="text" class="form-control" id="nombre" aria-describedby="nombre" required>
             </div>
 
             <div class="mb-3">
-              <div>
-                <label for="transaccion" class="form-label">Transacción:</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <label class="form-check-label" for="venta">Venta</label>
-                <input class="form-check-input" id="venta" type="radio" name="transaccion" value="venta" checked>
-              </div>
-              <div class="form-check form-check-inline">
-                <label class="form-check-label" for="alquiler">Alquiler</label>
-                <input class="form-check-input" id="alquiler" type="radio" name="transaccion" value="alquiler">
+              <label for="tamano" class="form-label">Tamaño:</label>
+              <input name="tamano" type="number" class="form-control" id="tamano" aria-describedby="tamano" min="100" max="10000000" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="masa" class="form-label">Masa:</label>
+              <input name="masa" type="text" class="form-control" id="masa" aria-describedby="masa" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="tipo" class="form-label">Tipo:</label>
+              <select class="form-select" aria-label="Default select example" name="tipo" id="tipo">
+                <option selected>Open this select menu</option>
+                <option value="rocoso">Rocoso</option>
+                <option value="gaseoso">Gaseoso</option>
+                <option value="helado">Helado</option>
+                <option value="enano">Enano</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="distancia" class="form-label">Distancia:</label>
+              <input name="distancia" type="number" class="form-control" id="distancia" aria-describedby="distancia" min="100" max="10000000" required>
+            </div>
+
+            <div class="mb-3">
+              <div class="col-auto">
+                <label for="vida" class="form-label mr-5">Presenta Vida:</label>
+                <input name="vida" type="checkbox" class="form-check-input" id="vida" aria-describedby="vida">
               </div>
             </div>
 
             <div class="mb-3">
-              <label for="descripcion" class="form-label">Descripción:</label>
+              <div class="col-auto">
+                <label for="anillo" class="form-label mr-5">Presenta Anillo:</label>
+                <input name="anillo" type="checkbox" class="form-check-input" id="anillo" aria-describedby="anillo">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="atmosfera" class="form-label">Composición Atmosférica:</label>
               <textarea
                 class="form-control"
-                id="descripcion"
-                name="descripcion"
+                id="atmosfera"
+                name="atmosfera"
                 rows="4"
                 maxlength="100"
                 required
               ></textarea>
-            </div>
-
-            <div class="mb-5">
-              <label for="precio" class="form-label">Precio:</label>
-              <input type="number" class="form-control" id="precio" name="precio" required>
-            </div>
-
-            <div class="mb-5 row">
-              <div class="col-auto">
-                <label for="puertas" class="form-label">
-                  <i class="fa-solid fa-car-side"></i>
-                  Puertas: </label>
-              </div>
-              <div class="col-auto">
-                <input type="number" class="form-control" id="puertas" name="puertas" min="2" max="5" required>
-              </div>
-              <div class="col-auto">
-                <label for="km" class="form-label">
-                  <i class="fa-brands fa-cloudscale"></i>
-                  Kilometraje: </label>
-              </div>
-              <div class="col-auto">
-                <input type="number" class="form-control" id="km" name="km" min="0" required>
-              </div>
-              <div class="col-auto">
-                <label for="potencia" class="form-label">
-                  <i class="fa-solid fa-gopuram"></i>
-                  Potencia: </label>
-              </div>
-              <div class="col-auto">
-                <input type="number" class="form-control" id="potencia" name="potencia" min="0" required>
-              </div>
             </div>
 
             <div class="row">
@@ -197,7 +188,7 @@
           </ul>
         </nav>
         <p>
-          Todos los derechos reservados <date>2024</date>
+          Todos los derechos reservados <span id="anio"></span>
           <span class="copyright">&copy</span>
         </p>
       </div>

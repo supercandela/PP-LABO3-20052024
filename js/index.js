@@ -1,22 +1,26 @@
-import Anuncio_Auto from "./anuncio_auto.js";
+import Planeta from "./Planeta.js";
 
 // ------>  Variables
 
 //Nombre clave del local storage
-const dataLocalStorage = "lista";
+const dataLocalStorage = "planetas";
 
 //Array de objetos a usar
 let listado = getData() || [];
 
+
+
 //Campos del form
 let elementId = document.getElementById("element-id");
-let titulo = document.getElementById("titulo");
-let tipoTransaccion = document.getElementById("transaccion");
-let descripcion = document.getElementById("descripcion");
-let precio = document.getElementById("precio");
-let puertas = document.getElementById("puertas");
-let kilometraje = document.getElementById("km");
-let potencia = document.getElementById("potencia");
+let nombre = document.getElementById("nombre");
+let tamano = document.getElementById("tamano");
+let masa = document.getElementById("masa");
+let tipo = document.getElementById("tipo");
+let vida = document.getElementById("vida");
+let anillo = document.getElementById("anillo");
+let atmosfera = document.getElementById("atmosfera"); 
+
+
 
 // const frm = document.forms[0];
 
@@ -32,6 +36,12 @@ const tablaContenedor = document.getElementById("tabla");
 // ------>  Event Listeners
 
 window.addEventListener("DOMContentLoaded", () => {
+  // Obtener el año actual y setearlo en el footer
+  const anioActual = new Date().getFullYear();
+  document.getElementById('anio').textContent = anioActual;
+
+
+
   displayTabla();
   document.addEventListener("click", onClick);
   btnEliminar.addEventListener("click", onEliminarElemento);
@@ -130,7 +140,7 @@ function ocultarSpinner() {
 //Manipulación Formulario
 function vaciarFormulario() {
   elementId.value = "";
-  titulo.value = "";
+  nombre.value = "";
   document.querySelector(
     'input[name="transaccion"][value="venta"]'
   ).checked = true;
@@ -143,7 +153,7 @@ function vaciarFormulario() {
 
 function cargarFormulario(objeto) {
   elementId.value = objeto.id;
-  titulo.value = objeto.titulo;
+  nombre.value = objeto.nombre;
   if (objeto.transaccion == "venta") {
     document.querySelector(
       'input[name="transaccion"][value="venta"]'
@@ -215,7 +225,7 @@ function guardarElemento(e) {
   e.preventDefault();
 
   // console.log(elementId.value);
-  // console.log(titulo.value);
+  // console.log(nombre.value);
   // console.log(tipoTransaccion.value);
   // console.log(descripcion.value);
   // console.log(precio.value);
@@ -224,7 +234,7 @@ function guardarElemento(e) {
   // console.log(potencia.value);
 
   if (
-    titulo.value.trim() != "" &&
+    nombre.value.trim() != "" &&
     descripcion.value.trim() != "" &&
     precio.value.trim() != "" &&
     puertas.value.trim() != "" &&
@@ -255,7 +265,7 @@ function agregarElementoNuevo() {
   ).value;
   let element = new Anuncio_Auto(
     newId,
-    titulo.value,
+    nombre.value,
     transTipo,
     descripcion.value,
     precio.value,
@@ -274,7 +284,7 @@ function editarElemento() {
     if (id) {
       for (let i = 0; i < listado.length; i++) {
         if (listado[i].id == id) {
-          listado[i].titulo = titulo.value;
+          listado[i].nombre = nombre.value;
           let transTipo = document.querySelector(
             'input[name="transaccion"]:checked'
           ).value;
