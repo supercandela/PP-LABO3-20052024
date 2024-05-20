@@ -8,26 +8,21 @@ const dataLocalStorage = "planetas";
 //Array de objetos a usar
 let listado = getData() || [];
 
-
-
 //Campos del form
 let elementId = document.getElementById("element-id");
 let nombre = document.getElementById("nombre");
 let tamano = document.getElementById("tamano");
 let masa = document.getElementById("masa");
 let tipo = document.getElementById("tipo");
+let distancia = document.getElementById("distancia");
 let vida = document.getElementById("vida");
 let anillo = document.getElementById("anillo");
 let atmosfera = document.getElementById("atmosfera"); 
 
-
-
-// const frm = document.forms[0];
-
 // Botones
 const btnSubmit = document.getElementById("btnSubmit");
 const btnEliminar = document.getElementById("btnEliminar");
-// const btnCancelar = document.getElementById("btnCancelar");
+const btnCancelar = document.getElementById("btnCancelar");
 
 //Divs
 const spinnerContenedor = document.getElementById("spinnerContenedor");
@@ -62,7 +57,7 @@ btnSubmit.addEventListener("keydown", (e) => {
 
 //Manipulación Local Storage
 function getData() {
-  return JSON.parse(localStorage.getItem("lista"));
+  return JSON.parse(localStorage.getItem(dataLocalStorage));
 }
 
 function postLocalStorage(clave, info) {
@@ -141,33 +136,25 @@ function ocultarSpinner() {
 function vaciarFormulario() {
   elementId.value = "";
   nombre.value = "";
-  document.querySelector(
-    'input[name="transaccion"][value="venta"]'
-  ).checked = true;
-  descripcion.value = "";
-  precio.value = "";
-  puertas.value = "";
-  kilometraje.value = "";
-  potencia.value = "";
+  tamano.value = "";
+  masa.value = "";
+  tipo.value = "";
+  distancia.value = "";
+  vida.checked = false;
+  anillo.checked = false;
+  atmosfera.value = "";
 }
 
 function cargarFormulario(objeto) {
   elementId.value = objeto.id;
   nombre.value = objeto.nombre;
-  if (objeto.transaccion == "venta") {
-    document.querySelector(
-      'input[name="transaccion"][value="venta"]'
-    ).checked = true;
-  } else {
-    document.querySelector(
-      'input[name="transaccion"][value="alquiler"]'
-    ).checked = true;
-  }
-  descripcion.value = objeto.descripcion;
-  precio.value = objeto.precio;
-  puertas.value = objeto.puertas;
-  kilometraje.value = objeto.kilometraje;
-  potencia.value = objeto.potencia;
+  tamano.value = objeto.tamano;
+  masa.value = objeto.masa;
+  tipo.value = objeto.tipo;
+  distancia.value = objeto.distancia_al_sol;
+  vida.checked = objeto.presencia_de_vida;
+  anillo.checked = objeto.posee_anillo;
+  atmosfera.value = objeto.composicion_atmosferica;
 }
 
 function cambiarBotones(target) {
@@ -195,14 +182,13 @@ function cambiarBotones(target) {
 }
 
 function onClick(e) {
-  console.log(e.target);
   if (e.target.matches("td")) {
     let id = e.target.parentNode.dataset.id;
     const elemento = listado.filter((p) => p.id === parseInt(id))[0];
     cargarFormulario(elemento);
     cambiarBotones(e.target);
     document
-      .querySelector("section.institucional")
+      .querySelector("section.formulario-principal")
       .scrollIntoView(false, { behavior: "smooth" });
   } else if (
     !e.target.matches("input") &&
@@ -224,22 +210,13 @@ function onCancelar() {
 function guardarElemento(e) {
   e.preventDefault();
 
-  // console.log(elementId.value);
-  // console.log(nombre.value);
-  // console.log(tipoTransaccion.value);
-  // console.log(descripcion.value);
-  // console.log(precio.value);
-  // console.log(puertas.value);
-  // console.log(kilometraje.value);
-  // console.log(potencia.value);
-
   if (
     nombre.value.trim() != "" &&
-    descripcion.value.trim() != "" &&
-    precio.value.trim() != "" &&
-    puertas.value.trim() != "" &&
-    kilometraje.value.trim() != "" &&
-    potencia.value.trim() != ""
+    tamano.value.trim() != "" &&
+    masa.value.trim() != "" &&
+    tipo.value.trim() != "" &&
+    distancia.value.trim() != "" &&
+    atmosfera.value.trim() != ""
   ) {
     borrarTabla();
     if (parseInt(elementId.value) > 0) {
@@ -260,18 +237,16 @@ function guardarElemento(e) {
 function agregarElementoNuevo() {
   console.log("Agregar elemento nuevo");
   let newId = Date.now();
-  let transTipo = document.querySelector(
-    'input[name="transaccion"]:checked'
-  ).value;
-  let element = new Anuncio_Auto(
+  let element = new Planeta(
     newId,
     nombre.value,
-    transTipo,
-    descripcion.value,
-    precio.value,
-    puertas.value,
-    kilometraje.value,
-    potencia.value
+    tamano.value,
+    masa.value,
+    tipo.value,
+    distancia.value,
+    vida.checked,
+    anillo.checked,
+    atmosfera.value
   );
   listado.push(element);
 }
@@ -285,15 +260,13 @@ function editarElemento() {
       for (let i = 0; i < listado.length; i++) {
         if (listado[i].id == id) {
           listado[i].nombre = nombre.value;
-          let transTipo = document.querySelector(
-            'input[name="transaccion"]:checked'
-          ).value;
-          listado[i].transaccion = transTipo;
-          listado[i].descripcion = descripcion.value;
-          listado[i].precio = precio.value;
-          listado[i].puertas = puertas.value;
-          listado[i].kilometraje = kilometraje.value;
-          listado[i].potencia = potencia.value;
+          listado[i].tamano = tamano.value;
+          listado[i].masa = masa.value;
+          listado[i].tipo = tipo.value;
+          listado[i].distancia_al_sol = distancia.value;
+          listado[i].presencia_de_vida = vida.checked;
+          listado[i].posee_anillo = anillo.checked;
+          listado[i].composicion_atmosferica = atmosfera.value;
           break;
         }
       }
