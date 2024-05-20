@@ -1,0 +1,261 @@
+/* GENERAL */
+
+@font-face {
+  font-family: "OpenSansRegular";
+  src: url("../assets/fonts/OpenSans-Regular.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(179, 179, 179);
+  color: rgb(0, 0, 0);
+  font-family: "OpenSansRegular", Arial, Helvetica, sans-serif;
+}
+
+/* END OF GENERAL */
+
+/* HEADER */
+
+header {
+  background-color: rgb(13, 116, 175);
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+header nav {
+  width: 100%;
+  background-color: none;
+}
+
+header nav a {
+  text-align: center;
+}
+
+header nav img.logo-principal {
+  height: 4em;
+  width: 4em;
+}
+
+header nav h2 {
+  color: rgb(216, 175, 37);
+  font-size: 2em;
+  line-height: 1.5em;
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+
+header nav h6 {
+  color: black;
+  font-size: 0.9em;
+  line-height: 1.3em;
+  font-weight: bolder;
+}
+
+header nav button.navbar-toggler {
+  border: none;
+  color: white;
+}
+
+header nav div#navbarNav {
+  justify-content: flex-end;
+}
+
+header nav ul {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+header nav div ul.navbar-nav li a.nav-link,
+header nav div ul.navbar-nav li a.nav-link.active {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 1.2em;
+}
+
+/* END OF HEADER */
+
+/* FOOTER */
+footer {
+  background-color: rgb(13, 116, 175);
+  padding: 30px 50px;
+}
+
+footer div.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+footer nav ul {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+footer nav ul li a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+footer p {
+  color: white;
+}
+
+/* END OF FOOTER */
+
+/* SECTION */
+
+h2.section-title {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-weight: lighter;
+  text-transform: capitalize;
+  font-size: 2em;
+}
+
+section div.banner {
+  width: 100%;
+  height: 300px;
+  background-color: grey;
+  background-image: url("../assets/images/banner-autos.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  margin-bottom: 30px;
+}
+
+/* END OF SECTION */
+
+/* SECTION - FORM */
+
+section.formulario-principal {
+  margin: 3em;
+}
+
+section.formulario-principal div.marco {
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 1.5em;
+}
+
+section.formulario-principal div.marco h6 {
+  color: black;
+  font-size: 1.1em;
+  line-height: 1.3em;
+  font-weight: bolder;
+}
+
+.btnEliminarShow {
+    display: block;
+}
+
+.btnEliminarHide {
+    display: none;
+}
+
+/* END OF SECTION - FORM */
+
+/* SECTION - LISTA */
+
+section.lista {
+  margin: 3em;
+}
+
+section.lista div.spinner {
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    background-image: url("../assets/images/loader.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.responsiveTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.responsiveTable td,
+.responsiveTable th {
+  padding: 12px 15px;
+  /* border: 1px solid #ddd; */
+  text-align: center;
+  font-size: 16px;
+}
+
+.responsiveTable th {
+  background-color: #92c9e6;
+  color: #ffffff;
+  text-transform: capitalize;
+}
+
+.responsiveTable tbody tr:nth-child(even) {
+  background-color: #d1e8f5;
+}
+
+/* --------- MEDIA QUERIES ---------- */
+@media (max-width: 1000px) {
+  .responsiveTable thead {
+    display: none;
+  }
+  .responsiveTable,
+  .responsiveTable tbody,
+  .responsiveTable tr,
+  .responsiveTable td {
+    display: block;
+    width: 100%;
+  }
+  .responsiveTable tr {
+    margin-bottom: 15px;
+  }
+  .responsiveTable td {
+    padding-left: 50%;
+    text-align: left;
+    position: relative;
+  }
+  .responsiveTable td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    text-transform: capitalize;
+  }
+}
+/* END OF SECTION - LISTA */
+
+/* --------- MEDIA QUERIES ---------- */
+
+/* FOOTER */
+@media only screen and (max-width: 820px) {
+  /* Oculta el nav bar del footer en pantallas chicas */
+  footer div.footer nav {
+    display: none;
+  }
+}
