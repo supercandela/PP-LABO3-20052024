@@ -193,7 +193,9 @@ function onClick(e) {
   } else if (
     !e.target.matches("input") &&
     !e.target.matches("textarea") &&
-    !e.target.matches("label")
+    !e.target.matches("label") &&
+    !e.target.matches("select") &&
+    !e.target.matches("option")
   ) {
     cambiarBotones(e.target);
     vaciarFormulario();
@@ -230,12 +232,11 @@ function guardarElemento(e) {
       displayTabla(listado);
       vaciarFormulario();
       ocultarSpinner();
-    }, 3000);
+    }, 2500);
   }
 }
 
 function agregarElementoNuevo() {
-  console.log("Agregar elemento nuevo");
   let newId = Date.now();
   let element = new Planeta(
     newId,
@@ -244,17 +245,15 @@ function agregarElementoNuevo() {
     masa.value,
     tipo.value,
     distancia.value,
-    vida.checked,
-    anillo.checked,
+    !vida.checked,
+    !anillo.checked,
     atmosfera.value
   );
   listado.push(element);
 }
 
 function editarElemento() {
-  console.log("Editar elemento");
   let id = parseInt(elementId.value);
-  //VER MODAL
   if (confirm("Confirma la modificación")) {
     if (id) {
       for (let i = 0; i < listado.length; i++) {
@@ -276,7 +275,6 @@ function editarElemento() {
 
 function onEliminarElemento(e) {
   let id = parseInt(elementId.value);
-  //VER MODAL
   if (confirm("Confirma la Eliminacion")) {
     borrarTabla();
     mostrarSpinner();
@@ -293,7 +291,6 @@ function onEliminarElemento(e) {
         vaciarFormulario();
         ocultarSpinner();
       }
-    }, 3000);
+    }, 2500);
   }
 }
-
