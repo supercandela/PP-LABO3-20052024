@@ -212,6 +212,18 @@ function onCancelar() {
 function guardarElemento(e) {
   e.preventDefault();
 
+  if (nombre.value.trim() == "" ||
+      tamano.value.trim() != "" ||
+      masa.value.trim() != "" ||
+      tipo.value.trim() != "" ||
+      distancia.value.trim() != "" ||
+      atmosfera.value.trim() != ""
+      )
+      {
+        alert("El planeta debe tener un nombre, tamaño, masa, tipo, distancia al sol y composición atmosférica");
+        return;
+      }
+
   if (
     nombre.value.trim() != "" &&
     tamano.value.trim() != "" &&
